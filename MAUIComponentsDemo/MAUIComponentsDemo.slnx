@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MAUIComponentsDemo/MAUIComponentsDemo.csproj">
+    <BuildType Project="Release" />
+    <Deploy />
+  </Project>
+</Solution>

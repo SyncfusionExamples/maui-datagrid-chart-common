@@ -170,8 +170,8 @@ Features are grouped by Syncfusion control below. Bullets marked with ✅ are de
 
 #### Chart Types
 - `HiLoOpenCloseSeries` ✅ (Stock Price candlestick)
-- `CandleSeries`
-- `OHLC` and `Range` series
+- `Candle` Series
+- `OHLC` series
 
 #### Data Binding
 - Bound to `StockPrice` model with `Open`, `High`, `Low`, `Close` ✅
@@ -204,12 +204,11 @@ The Data Grid and Charts integrate seamlessly with:
 
 - REST APIs
 - OData Services
-- GraphQL APIs
 - Entity Framework
 - SQL Server and more
 - Azure Services
 - Cloud and On-Premises Data Sources
-- In-memory collections (used in this sample) ✅
+- In-memory collections 
 
 ## Documentation
 

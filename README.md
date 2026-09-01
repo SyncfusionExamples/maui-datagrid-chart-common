@@ -170,7 +170,7 @@ Features are grouped by Syncfusion control below. Bullets marked with ✅ are de
 
 #### Chart Types
 - `HiLoOpenCloseSeries` ✅ (Stock Price candlestick)
-- `Candle` Series
+- `Candle` series
 - `OHLC` series
 
 #### Data Binding

@@ -12,19 +12,10 @@ Both components are optimized for modern business applications such as CRM syste
 ## Supported Platforms
 
 ### .NET MAUI
-![.NET MAUI](https://img.shields.io/badge/.NET_MAUI-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-
-### Android
-![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-
-### iOS
-![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=apple&logoColor=white)
-
-### macOS (Mac Catalyst)
-![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)
-
-### Windows
-![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+- Android
+- iOS
+- macOS (Mac Catalyst)
+- Windows
 
 ## Key Features
 

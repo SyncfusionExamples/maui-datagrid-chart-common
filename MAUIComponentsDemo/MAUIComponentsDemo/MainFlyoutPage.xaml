@@ -2,7 +2,7 @@
 <FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="MAUIComponentsDemo.MainFlyoutPage"
-            Title="Syncfusion Components"
+            Title="Syncfusion Components" FlyoutLayoutBehavior="Popover"
             BackgroundColor="#F5F5F5">
 
     <FlyoutPage.Resources>
@@ -25,7 +25,7 @@
             <Grid RowDefinitions="Auto,*" BackgroundColor="#FFFFFF">
                 <!-- Header Section -->
                 <StackLayout Grid.Row="0" 
-                           BackgroundColor="#2196F3" 
+                           BackgroundColor="#6750A4" 
                            Padding="20,40,20,20" 
                            Spacing="0">
                     <Label Text="Components" 
@@ -62,7 +62,7 @@
 
     <!-- Detail Page -->
     <FlyoutPage.Detail>
-        <NavigationPage x:Name="detailPage" BarBackgroundColor="#2196F3" BarTextColor="White" IconColor="White">
+        <NavigationPage x:Name="detailPage" BarBackgroundColor="#6750A4" BarTextColor="White" IconColor="Black">
             <x:Arguments>
                 <ContentPage Title="Syncfusion Components"  BackgroundColor="#F5F5F5">
                     <Grid RowDefinitions="*"  ColumnDefinitions="*" BackgroundColor="#F5F5F5">

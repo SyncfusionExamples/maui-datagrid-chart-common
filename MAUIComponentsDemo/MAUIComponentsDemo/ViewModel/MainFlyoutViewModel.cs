@@ -2,6 +2,7 @@ using MAUIComponentsDemo.Controls.DataGrid.Sample;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
+using MAUIComponentsDemo.Controls.Chart;
 
 namespace MAUIComponentsDemo.ViewModel
 {
@@ -51,32 +52,7 @@ namespace MAUIComponentsDemo.ViewModel
                         page = new SfDataGridDemo();
                         break;
                     case "chart":
-                        // TODO: Create Chart page
-                        page = new ContentPage
-                        {
-                            Title = "Chart",
-                            BackgroundColor = Colors.White,
-                            Content = new StackLayout
-                            {
-                                VerticalOptions = LayoutOptions.CenterAndExpand,
-                                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                                Children =
-                                {
-                                    new Label
-                                    {
-                                        Text = "Chart Component",
-                                        FontSize = 20,
-                                        FontAttributes = FontAttributes.Bold,
-                                        TextColor = Colors.Black
-                                    },
-                                    new Label
-                                    {
-                                        Text = "Chart page coming soon...",
-                                        TextColor = Colors.Gray
-                                    }
-                                }
-                            }
-                        };
+                        page = new ChartDemo();
                         break;
                 }
 

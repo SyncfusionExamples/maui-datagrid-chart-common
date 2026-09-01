@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUIComponentsDemo.Controls.DataGrid.Sample.SfDataGridDemo"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             Title="Data Grid"
              xmlns:local="clr-namespace:MAUIComponentsDemo">
 
     <ContentPage.BindingContext>

@@ -68,12 +68,19 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="*" />
 		<PackageReference Include="Syncfusion.Maui.DataGridExport" Version="*" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Controls\DataGrid\Sample\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Controls\Chart\ChartDemo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

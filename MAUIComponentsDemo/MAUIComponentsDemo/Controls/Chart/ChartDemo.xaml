@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUIComponentsDemo.Controls.Chart.ChartDemo"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:model="clr-namespace:MAUIComponentsDemo.Controls.Chart;assembly=MAUIComponentsDemo"
+             Title="Chart">
+
+    <ContentPage.BindingContext>
+        <model:ChartViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Color x:Key="ChartPrimary">#6750A4</Color>
+        <Color x:Key="ChartSecondary">#006A6A</Color>
+        <Color x:Key="ChartPalette1">#3B6BD5</Color>
+        <Color x:Key="BullColor">#2E7D32</Color>
+        <Color x:Key="BearColor">#C62828</Color>
+        <Color x:Key="TargetBandFill">#F1EAFA</Color>
+        <Color x:Key="SessionBandFill">#F7F5FF</Color>
+        <Color x:Key="SectionTitleColor">#1D1B20</Color>
+        <Color x:Key="SectionSubtitleColor">#49454F</Color>
+        <Color x:Key="SectionCardStroke">#E1E1E1</Color>
+  
+        <x:Double x:Key="SpaceMedium">12</x:Double>
+        <x:Double x:Key="SpaceLarge">16</x:Double>
+        <x:Double x:Key="SpaceXLarge">24</x:Double>
+
+        <Style x:Key="GridSectionCardStyle" TargetType="Border">
+            <Setter Property="Stroke" Value="{StaticResource SectionCardStroke}"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="StrokeShape" Value="RoundRectangle 12"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="Padding" Value="{StaticResource SpaceLarge}"/>
+        </Style>
+
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="*,*"
+       ColumnDefinitions="*,*"
+       RowSpacing="{StaticResource SpaceMedium}"
+       ColumnSpacing="{StaticResource SpaceMedium}">
+
+
+        <Border Grid.Row="0" Grid.Column="0"
+             Style="{StaticResource GridSectionCardStyle}">
+                <chart:SfCartesianChart>
+                    <chart:SfCartesianChart.Title>
+                        <Label Text="Monthly Revenue Trend (2025)" Margin="0,0,0,10"
+                            HorizontalOptions="Center"
+                            FontFamily="OpenSansSemibold"
+                            TextColor="{StaticResource SectionSubtitleColor}"/>
+                    </chart:SfCartesianChart.Title>
+
+                    <chart:SfCartesianChart.XAxes>
+                        <chart:CategoryAxis>
+                            <chart:CategoryAxis.Title>
+                                <chart:ChartAxisTitle Text="Month"/>
+                            </chart:CategoryAxis.Title>
+                        </chart:CategoryAxis>
+                    </chart:SfCartesianChart.XAxes>
+
+                    <chart:SfCartesianChart.YAxes>
+                        <chart:NumericalAxis Minimum="0" Maximum="160" Interval="40">
+                            <chart:NumericalAxis.Title>
+                                <chart:ChartAxisTitle Text="Revenue ($k)"/>
+                            </chart:NumericalAxis.Title>
+                            <chart:NumericalAxis.PlotBands>
+                                <chart:NumericalPlotBandCollection>
+                                    <chart:NumericalPlotBand Start="100" End="140"
+                                                          Fill="{StaticResource TargetBandFill}"
+                                                          Text="Target zone">
+                                        <chart:NumericalPlotBand.LabelStyle>
+                                            <chart:ChartPlotBandLabelStyle TextColor="{StaticResource ChartPrimary}"/>
+                                        </chart:NumericalPlotBand.LabelStyle>
+                                    </chart:NumericalPlotBand>
+                                </chart:NumericalPlotBandCollection>
+                            </chart:NumericalAxis.PlotBands>
+                        </chart:NumericalAxis>
+                    </chart:SfCartesianChart.YAxes>
+
+                    <chart:SfCartesianChart.Series>
+                        <chart:LineSeries Label="Revenue"
+                                       ItemsSource="{Binding RevenueData}"
+                                       XBindingPath="Month"
+                                       YBindingPath="Revenue"
+                                       Fill="{StaticResource ChartPrimary}"
+                                       EnableTooltip="True"
+                                       ShowDataLabels="True">
+                            <chart:LineSeries.DataLabelSettings>
+                                <chart:CartesianDataLabelSettings>
+                                    <chart:CartesianDataLabelSettings.LabelStyle>
+                                        <chart:ChartDataLabelStyle TextColor="{StaticResource SectionSubtitleColor}"/>
+                                    </chart:CartesianDataLabelSettings.LabelStyle>
+                                </chart:CartesianDataLabelSettings>
+                            </chart:LineSeries.DataLabelSettings>
+                        </chart:LineSeries>
+                    </chart:SfCartesianChart.Series>
+
+                    <chart:SfCartesianChart.Annotations>
+                        <chart:VerticalLineAnnotation X1="Jun"
+                                                   Text="Mid-year peak">
+                            <chart:VerticalLineAnnotation.LabelStyle>
+                                <chart:ChartAnnotationLabelStyle TextColor="{StaticResource ChartPrimary}"
+                                                              FontAttributes="Bold"/>
+                            </chart:VerticalLineAnnotation.LabelStyle>
+                        </chart:VerticalLineAnnotation>
+                    </chart:SfCartesianChart.Annotations>
+                </chart:SfCartesianChart>
+        </Border>
+
+        <Border Grid.Row="0" Grid.Column="1">
+            <Grid RowDefinitions="Auto,*">
+                <Button Text="Export" Clicked="Button_Clicked1" HorizontalOptions="End" HeightRequest="25" Margin="0,2,2,0" Grid.Row="0"/>
+
+                <chart:SfCartesianChart Grid.Row="1"  x:Name="columnChart">
+
+                <chart:SfCartesianChart.Title>
+                    <Label Text="Quarterly Sales by Product"
+                 HorizontalOptions="Center"
+                 FontFamily="OpenSansSemibold"
+                 TextColor="{StaticResource SectionSubtitleColor}"/>
+                </chart:SfCartesianChart.Title>
+
+                <chart:SfCartesianChart.Legend>
+                    <chart:ChartLegend/>
+                </chart:SfCartesianChart.Legend>
+
+                <chart:SfCartesianChart.XAxes>
+                    <chart:CategoryAxis>
+                        <chart:CategoryAxis.Title>
+                            <chart:ChartAxisTitle Text="Quarter"/>
+                        </chart:CategoryAxis.Title>
+                    </chart:CategoryAxis>
+                </chart:SfCartesianChart.XAxes>
+
+                <chart:SfCartesianChart.YAxes>
+                    <chart:NumericalAxis>
+                        <chart:NumericalAxis.Title>
+                            <chart:ChartAxisTitle Text="Sales ($k)"/>
+                        </chart:NumericalAxis.Title>
+                    </chart:NumericalAxis>
+                </chart:SfCartesianChart.YAxes>
+
+                <chart:SfCartesianChart.Series>
+                    <chart:ColumnSeries Label="Laptops"
+                              ItemsSource="{Binding LaptopSales}"
+                              XBindingPath="Quarter"
+                              YBindingPath="Sales"
+                              Fill="{StaticResource ChartPalette1}"
+                              EnableTooltip="True"/>
+                    <chart:ColumnSeries Label="Tablets"
+                              ItemsSource="{Binding TabletSales}"
+                              XBindingPath="Quarter"
+                              YBindingPath="Sales"
+                              Fill="{StaticResource ChartSecondary}"
+                              EnableTooltip="True"/>
+                </chart:SfCartesianChart.Series>
+
+                </chart:SfCartesianChart>
+
+            </Grid>
+
+        </Border>
+   
+        <Border Grid.Row="1" Grid.Column="0">
+            <Grid RowDefinitions="Auto,*">
+                <Button Text="Export" Clicked="Button_Clicked" HorizontalOptions="End" HeightRequest="25" Margin="0,2,2,0" Grid.Row="0"/>
+                <chart:SfCircularChart x:Name="pieChart" Grid.Row="1">
+                <chart:SfCircularChart.Title>
+                        <Label Text="Market Share by Platform" Margin="0,5,0,0"
+                          HorizontalOptions="Center" FontFamily="OpenSansSemibold"
+                          TextColor="{StaticResource SectionSubtitleColor}"/>
+                </chart:SfCircularChart.Title>
+
+                <chart:SfCircularChart.Legend>
+                    <chart:ChartLegend/>
+                </chart:SfCircularChart.Legend>
+
+                <chart:SfCircularChart.Series>
+                    <chart:PieSeries ItemsSource="{Binding MarketShareData}"
+                                      XBindingPath="Platform"
+                                      YBindingPath="Share"
+                                      PaletteBrushes="{Binding PaletteBrushes}"
+                                      ShowDataLabels="True"
+                                      EnableTooltip="True">
+                        <chart:PieSeries.DataLabelSettings>
+                            <chart:CircularDataLabelSettings>
+                                <chart:CircularDataLabelSettings.LabelStyle>
+                                    <chart:ChartDataLabelStyle TextColor="White"/>
+                                </chart:CircularDataLabelSettings.LabelStyle>
+                            </chart:CircularDataLabelSettings>
+                        </chart:PieSeries.DataLabelSettings>
+                    </chart:PieSeries>
+                </chart:SfCircularChart.Series>
+            </chart:SfCircularChart>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="1">
+            <chart:SfCartesianChart>
+                <chart:SfCartesianChart.Title>
+                    <Label Text="Stock Price — Daily Candlesticks" Margin="0,0,0,10"
+                            HorizontalOptions="Center"
+                            FontFamily="OpenSansSemibold"
+                            TextColor="{StaticResource SectionSubtitleColor}"/>
+                </chart:SfCartesianChart.Title>
+
+                <chart:SfCartesianChart.XAxes>
+                    <chart:DateTimeCategoryAxis>
+                        <chart:DateTimeCategoryAxis.LabelStyle>
+                            <chart:ChartAxisLabelStyle LabelFormat="dd MMM"/>
+                        </chart:DateTimeCategoryAxis.LabelStyle>
+                        <chart:DateTimeCategoryAxis.Title>
+                            <chart:ChartAxisTitle Text="Date"/>
+                        </chart:DateTimeCategoryAxis.Title>
+                        <chart:DateTimeCategoryAxis.PlotBands>
+                            <chart:NumericalPlotBandCollection>
+                                <chart:NumericalPlotBand Start="0" End="4.5"
+                                                          Fill="{StaticResource SessionBandFill}"/>
+                                <chart:NumericalPlotBand Start="5" End="9.5"
+                                                          Fill="{StaticResource SessionBandFill}"/>
+                            </chart:NumericalPlotBandCollection>
+                        </chart:DateTimeCategoryAxis.PlotBands>
+                    </chart:DateTimeCategoryAxis>
+                </chart:SfCartesianChart.XAxes>
+
+                <chart:SfCartesianChart.YAxes>
+                    <chart:NumericalAxis Interval="10">
+                        <chart:NumericalAxis.Title>
+                            <chart:ChartAxisTitle Text="Price ($)"/>
+                        </chart:NumericalAxis.Title>
+                    </chart:NumericalAxis>
+                </chart:SfCartesianChart.YAxes>
+
+                <chart:SfCartesianChart.Series>
+                    <chart:CandleSeries Label="Daily OHLC"
+                                         ItemsSource="{Binding StockData}"
+                                         XBindingPath="Date"
+                                         Open="Open"
+                                         High="High"
+                                         Low="Low"
+                                         Close="Close"
+                                         EnableTooltip="True">
+                        <chart:CandleSeries.BullishFill>
+                            <SolidColorBrush Color="{StaticResource BullColor}"/>
+                        </chart:CandleSeries.BullishFill>
+                        <chart:CandleSeries.BearishFill>
+                            <SolidColorBrush Color="{StaticResource BearColor}"/>
+                        </chart:CandleSeries.BearishFill>
+                    </chart:CandleSeries>
+                </chart:SfCartesianChart.Series>
+            </chart:SfCartesianChart>
+        </Border>
+
+    </Grid>
+
+</ContentPage>

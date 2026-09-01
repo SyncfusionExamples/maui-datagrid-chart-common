@@ -43,6 +43,7 @@
             <syncfusion:SfDataGrid x:Name="dataGrid"
                                Grid.Row="1"
                                ColumnWidthMode="Fill"
+                               SelectionMode="Single"
                                ItemsSource="{Binding OrdersInfo}"
                                AllowEditing="True"
                                AllowFiltering="True"

@@ -9,7 +9,7 @@ This repository demonstrates the **Syncfusion Data Grid** and **Syncfusion Chart
 
 Both components are optimized for modern business applications such as CRM systems, ERP platforms, financial dashboards, reporting portals, inventory management solutions, healthcare systems, and data-intensive mobile/desktop applications.
 
-## Supported Frameworks
+## Supported Platforms
 
 ### .NET MAUI
 ![.NET MAUI](https://img.shields.io/badge/.NET_MAUI-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
